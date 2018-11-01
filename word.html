@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘输入</title>
+</head>
+<body>
+<div id="lu_word_box" style="margin: 0 auto;border: 10px solid #3385FF;border-radius: 10px;">
+
+</div>
+<div style="position:relative; width: 230px; height: 30px; margin: 0 auto; top: 15px;">
+    <input type="text" id="word" /> <button id="set">设置</button>
+</div>
+<div id="lu_word_box1" style="position:relative; margin: 0 auto;border: 10px solid #3385FF;top: 30px;border-radius: 10px;">
+
+</div>
+<div style="position:relative; width: 400px; height: 30px; margin: 0 auto; top: 30px;padding-top: 30px;">
+    <button id="red">设置字体为红色</button>
+    <button id="Bg">设置背景色</button>
+    <button id="stop">暂停</button>
+    <button id="start">开始</button>
+    <button id="write">码字</button>
+    <button id="del">退格</button>
+</div>
+</body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/word.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //例子1
+        $('#lu_word_box').lu_word();
+        $('#set').click(function(){
+            $('#lu_word_box').setWord($('#word').val());
+        });
+        //例子2
+        var obj1 = {
+            text:["广州，简称穗，别称羊城、花城，是广东省省会、副省级市、国家中心城市、超大城市、国际大都市、国际商贸中心、国际综合交通枢纽、国家综合性门户城市，首批沿海开放城市，是南部战区司令部驻地 [1-2]  。 " ,
+                "广州地处广东省中南部，珠江三角洲北缘，濒临南海，邻近香港、澳门，是中国通往世界的南大门，是粤港澳大湾区、泛珠江三角洲经济区的核心城市以及一带一路的枢纽城市。 [3-4] ",
+                "广州是国家历史文化名城，从秦朝开始，广州一直是郡治、州治、府治的行政中心；",
+                "一直是华南地区的政治、军事、经济、文化和科教中心，是岭南文化的发源地和兴盛地。"],//文本
+            color:"white",//字体和光标颜色
+            speed:100,//打字速度
+            sleep:3000,//回退停顿时间
+            width:"400",//宽度
+            height:"300",//高度
+            background:"#000",//背景颜色
+            sign:true//启动或停止
+        };
+        var box = $('#lu_word_box1');
+        box.lu_word(obj1);
+        $('#red').click(function(){
+            box.setColor('red');
+        });
+        $('#Bg').click(function(){
+            box.setColor('black');
+            box.setBg('#E5EECC');
+        });
+        $('#start').click(function(){
+            box.start();
+        });
+        $('#stop').click(function(){
+            box.stop();
+        });
+        $('#write').click(function(){
+            box.write();
+        });
+        $('#del').click(function(){
+            box.del();
+        });
+    });
+</script>
+</html>
