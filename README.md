@@ -1,3 +1,4 @@
+演示:http://www.jq22.com/yanshi20411
 # word
 模拟控制键盘输入
 
